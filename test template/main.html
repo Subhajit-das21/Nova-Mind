@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Blocks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 16px;
+            border-bottom: 1px solid #e0e0e0;
+            z-index: 1000;
+            box-shadow: 0 1px 2px rgba(60,64,67,0.1);
+        }
+        
+        .header-title {
+            font-size: 22px;
+            font-weight: 500;
+            color: #5f6368;
+        }
+        
+        .course-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 320px));
+            gap: 24px;
+            margin-top: 88px;
+            max-width: 1200px;
+            justify-content: center;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
+            position: relative;
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .course-card:hover {
+            box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .course-header {
+            height: 100px;
+            padding: 16px;
+            color: white;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .course-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .course-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .course-content {
+            padding: 16px;
+            min-height: 100px;
+            color: #5f6368;
+        }
+        
+        .course-letter {
+            position: absolute;
+            right: 24px;
+            bottom: 10px; /* Moved up from -24px to -6px */
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 500;
+            color: white;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+            z-index: 2;
+        }
+        
+        .menu-dots {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .physics-bg {
+            background-color: #1e88e5;
+        }
+        
+        .physics-letter {
+            background-color: #1565c0;
+        }
+        
+        .biology-bg {
+            background-color: #43a047;
+        }
+        
+        .biology-letter {
+            background-color: #2e7d32;
+        }
+        
+        .chemistry-bg {
+            background-color: #8e24aa;
+        }
+        
+        .chemistry-letter {
+            background-color: #6a1b9a;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span class="header-title">Nova Examinations</span>
+    </div>
+    
+    <div class="course-container">
+        <!-- Physics Card -->
+        <div class="course-card">
+            <div class="course-header physics-bg">
+                <div>
+                    <div class="course-title">Physics</div>
+                    <div class="course-subtitle">CSE A</div>
+                </div>
+                <div class="menu-dots">⋮</div>
+            </div>
+            <div class="course-letter physics-letter">P</div>
+            <div class="course-content">
+                <!-- Empty content area -->
+            </div>
+        </div>
+        
+        <!-- Biology Card -->
+        <div class="course-card">
+            <div class="course-header biology-bg">
+                <div>
+                    <div class="course-title">Biology</div>
+                    <div class="course-subtitle">CSE A</div>
+                </div>
+                <div class="menu-dots">⋮</div>
+            </div>
+            <div class="course-letter biology-letter">B</div>
+            <div class="course-content">
+                <!-- Empty content area -->
+            </div>
+        </div>
+        
+        <!-- Chemistry Card -->
+        <div class="course-card">
+            <div class="course-header chemistry-bg">
+                <div>
+                    <div class="course-title">Chemistry</div>
+                    <div class="course-subtitle">CSE A</div>
+                </div>
+                <div class="menu-dots">⋮</div>
+            </div>
+            <div class="course-letter chemistry-letter">C</div>
+            <div class="course-content">
+                <!-- Empty content area -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

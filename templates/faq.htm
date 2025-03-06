@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Create an FAQ Page with Show and Hide Questions and Answers using jQuery</title>
+  
+  <!-- jQuery -->
+  <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <script>
+ $(document).ready(function() {
+ 
+    $('.faq_question').click(function() {
+ 
+        if ($(this).parent().is('.open')){
+            $(this).closest('.faq').find('.faq_answer_container').animate({'height':'0'},500);
+            $(this).closest('.faq').removeClass('open');
+ 
+            }else{
+                var newHeight =$(this).closest('.faq').find('.faq_answer').height() +'px';
+                $(this).closest('.faq').find('.faq_answer_container').animate({'height':newHeight},500);
+                $(this).closest('.faq').addClass('open');
+            }
+    });
+});
+</script>
+  
+<!-- CSS -->
+<style>
+ 
+/*FAQS*/
+.faq_question {
+    margin: 0px;
+    padding: 0px 0px 5px 0px;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+}
+ 
+.faq_answer_container {
+    height: 0px;
+    overflow: hidden;
+    padding: 0px;
+}
+</style>
+  
+</head>
+  <body>
+
+   <!-- HTML -->
+   <div class="faq_container">
+    <div class="faq">
+       <div class="faq_question">Question: Is online education as effective as face-to-face instruction?</div>
+    
+               <div class="faq_answer">Online education may seem relatively new, 
+                but years of research suggests it can be just as effective as traditional coursework, 
+                and often more so. According to a U.S. Department of Education analysis of more 
+                than 1,000 learning studies, online students tend to outperform classroom-based students across 
+                most disciplines and demographics. Another major review published the same year found that online students 
+                had the advantage 70 percent of the time, a gap authors projected would only widen as programs and technologies evolve.</div>
+            </div> 
+        <div class="faq_question">Question: Is online education more conducive to cheating?</div>
+            
+               <div class="faq_answer">A study by Marshall University found that the students attending live courses have a 
+                higher tendency to cheat than the ones attending online courses.Another reason cheating is less common in online programs 
+                is that colleges have adopted strict anti-cheating protocols and technologies. According to a report published by the Online Learning Consortium, 
+                some online courses require students to report to proctored testing facilities to complete exams, though virtual proctoring using shared screens and webcams is increasingly popular.</div>
+            </div> 
+        <div class="faq_question">Question: How interactive can online learning be?</div>
+            
+               <div class="faq_answer">The quick answer is very interactive! And the more interactive, the better.
+                With the advancements in authoring software and LXP’s, online learning is more interactive than ever before. 
+                Multimedia content creates plenty of opportunities for the learner to take complete control over their learning experience.
+                Nowadays especially with the introduction of AI and AI-powered chatbots, learning and doubt-solving has become even more interactive and engaging.</div>
+            </div>
+        <div class="faq_question">Question: How can the use of AI be helpful for students?</div>
+            
+               <div class="faq_answer">AI can be a student's best friend! Imagine having a personal tutor who's always available, knows everything, and can explain anything in a way you understand. 
+                That's what AI can offer! It also provides personalized learning and instant doubt solving so that that the student does not have to waste his time on the internet searching for a clear answer to the 
+                particular question he/she has</div>
+            </div>        
+     </div>
+  </div>
+
+ </body>
+</html>

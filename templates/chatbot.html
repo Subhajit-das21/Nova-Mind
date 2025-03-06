@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styel1.css">
+    <title>NOVAMIND | CHATBOT</title>
+    <style>
+        /* Add some styles for the chatbot and layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .chat-window {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+            background-color: #f9f9f9;
+        }
+        .chat-output {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        footer a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NOVAMIND</h1>
+        <nav>
+            <a href="/">HOME</a>
+            <a href="chatbot">CHATBOT</a>
+            <a href="resources">RESOURCES</a>
+            <a href="account">ACCOUNT</a>
+            <a href="contact">CONTACT</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="chat-container">
+            <h2>NOVA CHATBOT:</h2>
+            <div class="chat-window">
+                <div id="chat-output" class="chat-output"></div>
+                <input type="text" id="user-input" placeholder="Type your message..." autofocus>
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+
+        <div class="student-profile py-4">
+            <div class="card">
+                <h3>Terms and Conditions Apply</h3>
+                <h5>COPYRIGHT <br> @NOVA.AI</h5>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="faq">FAQ</a>
+        <a href="contact">Contact Us</a>
+        <a href="termsandconditions">Terms of Use</a>
+        <a href="privacy">Privacy Policy</a>
+        <a href="/">&copy; 2024 | NOVAMIND</a>
+    </footer>
+
+    <script>
+        const sendBtn = document.getElementById('send-btn');
+        const userInput = document.getElementById('user-input');
+        const chatOutput = document.getElementById('chat-output');
+
+        sendBtn.addEventListener('click', async () => {
+            const input = userInput.value;
+            if (input.trim() === '') return;
+            appendMessage(`You: ${input}`);
+            userInput.value = '';
+
+            const response = await fetch('/get_response', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_input: input }),
+            });
+            const data = await response.json();
+            appendMessage(`Bot: ${data.response}`);
+        });
+
+        function appendMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.innerText = message;
+            chatOutput.appendChild(messageElement);
+            chatOutput.scrollTop = chatOutput.scrollHeight; // Scroll to the bottom
+        }
+    </script>
+</body>
+</html>
