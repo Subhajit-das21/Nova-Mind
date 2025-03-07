@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 24px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    border-bottom: 1px solid #e0e0e0;
+    z-index: 1000;
+    box-shadow: 0 1px 2px rgba(60,64,67,0.1);
+}
+
+.header-title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #5f6368;
+}
+
+.course-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 88px;
+    max-width: 1200px;
+}
+
+.course-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
+    position: relative;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    width: 320px;
+}
+
+.course-card:hover {
+    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+    transform: translateY(-2px);
+}
+
+.course-header {
+    height: 100px;
+    padding: 16px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.course-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    text-decoration: none;
+}
+
+.course-title a {
+    color: white;
+    text-decoration: none;
+}
+
+.course-title a:hover {
+    text-decoration: underline;
+}
+
+.course-content {
+    padding: 16px;
+    min-height: 100px;
+    color: #5f6368;
+}
+
+.course-letter {
+    position: absolute;
+    right: 24px;
+    bottom: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+    z-index: 2;
+}
+
+.menu-dots {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.physics-bg {
+    background-color: #1e88e5;
+}
+
+.physics-letter {
+    background-color: #1565c0;
+}
+
+.biology-bg {
+    background-color: #43a047;
+}
+
+.biology-letter {
+    background-color: #2e7d32;
+}
+
+.chemistry-bg {
+    background-color: #8e24aa;
+}
+
+.chemistry-letter {
+    background-color: #6a1b9a;
+}

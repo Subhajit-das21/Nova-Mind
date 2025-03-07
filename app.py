@@ -10,9 +10,9 @@ load_dotenv()
 app = Flask(__name__)
 
 # Configure Google AI Gemini model
-genai.configure(api_key=os.getenv("AIzaSyBqGHEdm2QQfmVb_Q2jncMtVR1UfO8cqIc"))
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))  # Use .env variable safely
 
-# Create the model with specific configuration
+# Model configuration
 generation_config = {
     "temperature": 1,
     "top_p": 0.95,
@@ -27,68 +27,40 @@ model = genai.GenerativeModel(
     system_instruction="You are an expert at everything. A champ 🏆."
 )
 
-# History to maintain conversation context
+# Maintain conversation history
 history = []
 
-# Route for the home page
+# --------------------- ROUTES ---------------------
+
 @app.route('/')
 def home():
     return render_template('home.html')
 
-# Route for the account page without the .html
-@app.route('/account')
-def account():
-    return render_template('account.html')
+@app.route('/<page>')
+@app.route('/<page>.html')
+def render_page(page):
+    """ Dynamically render pages to support both '/page' and '/page.html' """
+    try:
+        return render_template(f"{page}.html")
+    except:
+        return "Page not found", 404
 
-# Route for the resources page without the .html
-@app.route('/resources')
-def resources():
-    return render_template('resources.html')
-
-# Route for the chatbot page without the .html
-@app.route('/chatbot')
-def chatbot():
-    return render_template('chatbot.html')
-
-# Route for the contact page without the .html
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
-
-# Route for the signup page without the .html
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
-
-# Route for the signup page without the .html
-@app.route('/faq')
-def faq():
-    return render_template('faq.htm')
-# Route for the signup page without the .html
-@app.route('/privacy')
-def privacy():
-    return render_template('privacy.html')
-# Route for the signup page without the .html
-@app.route('/termsandconditions')
-def termsandconditions():
-    return render_template('termsandconditions.html')
-
-# Route to handle user input (text or voice) and return the bot response
+# 🧠 Handle AI chatbot responses
 @app.route('/get_response', methods=['POST'])
 def get_response():
     user_input = request.json.get('user_input')
 
-    # Start the chat session with the model
+    # Start chat session
     chat_session = model.start_chat(history=history)
     response = chat_session.send_message(user_input)
     model_response = response.text
 
-    # Update the conversation history
+    # Update chat history
     history.append({"role": "user", "parts": [user_input]})
     history.append({"role": "model", "parts": [model_response]})
 
     return jsonify({'response': model_response})
 
-
+# -------------------- MAIN --------------------
 if __name__ == '__main__':
     app.run(debug=True)
